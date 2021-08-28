@@ -1,15 +1,31 @@
 import React from 'react';
 import TopBanner from './components/TopBanner/TopBanner';
 import Services from './components/Services/Services';
-import TopNav from './components/TopNav/TopNavigation';  
-import Analysis from './components/Analysis/Analysis';  
+import TopNavigation from './components/TopNav/TopNavigation';
+import Analysis from './components/Analysis/Analysis';
+import Summary from './components/Summary/Summary';
+import RecentProject from './components/RecentProject/RecentProject';
+import Courses from './components/Courses/Courses';
+import Video from './components/Video/Video';
+import ClientReview from './components/ClientReview/ClientReview';
+import AboutMe from './components/AboutMe/AboutMe';
+import Footer from './components/Footer/Footer';
+
 function App() {
   return (
     <div className="App">
-        <TopNav/>
-        <TopBanner />
-        <Services/>
-        <Analysis/>
+      <TopNavigation />
+      <TopBanner />
+      <Services />
+      <Analysis />
+      <Summary />
+      <AboutMe />
+      <Courses />
+      <Video />
+      <ClientReview />
+      <RecentProject />
+      <Footer />
+
     </div>
   );
 }
