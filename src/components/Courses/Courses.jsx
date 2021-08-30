@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
  class Courses extends Component {
     render() {
@@ -19,7 +20,7 @@ import { Container, Row, Col } from 'react-bootstrap'
                                 <Col lg={6} md={6} sm={12}>
                                         <h5 className=" serviceName">Course 1  </h5>
                                         <p className=" serviceDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a className="courseViewMore" href="#" >View Details</a>
+                                        <Link className="courseViewMore float-left" to="/coursedetails" >View Details</Link>
                                 </Col>
 
 
@@ -31,7 +32,7 @@ import { Container, Row, Col } from 'react-bootstrap'
                                 <Col lg={6} md={6} sm={12}>
                                         <h5 className=" serviceName">Course 2  </h5>
                                         <p className=" serviceDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a className="courseViewMore" href="#" >View Details</a>
+                                        <Link className="courseViewMore float-left" to="/coursedetails" >View Details</Link>
                                 </Col> 
 
                             </Row>
@@ -46,7 +47,7 @@ import { Container, Row, Col } from 'react-bootstrap'
                                 <Col lg={6} md={6} sm={12}>
                                         <h5 className=" serviceName">Course 3  </h5>
                                         <p className=" serviceDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a className="courseViewMore" href="#" >View Details</a>
+                                        <Link className="courseViewMore float-left" to="/coursedetails" >View Details</Link>
                                 </Col>
 
 
@@ -58,7 +59,7 @@ import { Container, Row, Col } from 'react-bootstrap'
                                 <Col lg={6} md={6} sm={12}>
                                         <h5 className=" serviceName">Course 4  </h5>
                                         <p className=" serviceDescription">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <a className="courseViewMore text-left" href="#" >View Details</a>
+                                        <Link className="courseViewMore float-left" to="/coursedetails" >View Details</Link>
                                 </Col> 
 
                             </Row>

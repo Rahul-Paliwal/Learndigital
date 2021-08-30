@@ -6,6 +6,7 @@ import {faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
+import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
 
 
 class Footer extends Component {
@@ -40,15 +41,15 @@ class Footer extends Component {
                         </Col>
                         <Col lg={3} md={6} md={12} className="p-5 text-justify">
                             <h2 className="footerName ">Information </h2>
-                            <a className="footerLink" href="#">About Me </a> <br></br>
-                            <a  className="footerLink" href="#">Company Profile </a> <br></br>
-                            <a className="footerLink" href="#">Contact Us  </a> <br></br>
+                            <Link className="footerLink" to="/about">Profile </Link> <br></br>
+                            <Link className="footerLink" to="/services">Services </Link> <br></br>
+                            <Link className="footerLink" to="/contact">Contact Us  </Link> <br></br>
                         </Col>
                         <Col lg={3} md={6} md={12} className="p-5 text-justify">
                             <h2 className="footerName">Policy </h2>
-                                <a className="footerLink" href="#">Fefund Policy  </a> <br></br>
-                                <a className="footerLink" href="#">Trems And Condition  </a> <br></br>
-                                <a className="footerLink" href="#">Privaci Policy   </a> <br></br>
+                                <Link className="footerLink" to="/refund-policy">Refund Policy  </Link> <br></br>
+                                <Link className="footerLink" to="/terms-condition">Terms And Condition  </Link> <br></br>
+                                <Link className="footerLink" to="/privacy-policy">Privacy Policy   </Link> <br></br>
                         </Col>
                     </Row>
                 </Container>

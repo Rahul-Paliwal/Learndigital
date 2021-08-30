@@ -1,32 +1,17 @@
 import React from 'react';
-import TopBanner from './components/TopBanner/TopBanner';
-import Services from './components/Services/Services';
-import TopNavigation from './components/TopNav/TopNavigation';
-import Analysis from './components/Analysis/Analysis';
-import Summary from './components/Summary/Summary';
-import RecentProject from './components/RecentProject/RecentProject';
-import Courses from './components/Courses/Courses';
-import Video from './components/Video/Video';
-import ClientReview from './components/ClientReview/ClientReview';
-import AboutMe from './components/AboutMe/AboutMe';
-import Footer from './components/Footer/Footer';
+import {BrowserRouter} from "react-router-dom"
+import AppRoute from './routes/AppRoute';
 
-function App() {
+
+
+
+
+
+function App() {  
   return (
-    <div className="App">
-      <TopNavigation />
-      <TopBanner />
-      <Services />
-      <Analysis />
-      <Summary />
-      <AboutMe />
-      <Courses />
-      <Video />
-      <ClientReview />
-      <RecentProject />
-      <Footer />
-
-    </div>
+      <BrowserRouter>
+        <AppRoute/>
+      </BrowserRouter>
   );
 }
 
