@@ -4,14 +4,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faVideoSlash} from '@fortawesome/free-solid-svg-icons'
 import 'video-react/dist/video-react.css'
 import { Player, BigPlayButton } from 'video-react'
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
+import ReactHtmlParser from 'react-html-parser';
 
  class Video extends Component {
-      constructor(){
-          super();
-          this.state={
-               show:false
-          }
-     }
+    constructor(){
+        super();
+        this.state={
+             show:false,
+             video_desciption:"",
+             video_url:"" 
+        }
+   }
+
+
+    componentDidMount(){          
+         RestClient.GetRequest(AppUrl.HomeVideo).then(result=>{
+             this.setState({
+                  video_description:result[0]['video_description'],
+                  video_url:result[0]['video_url'] 
+
+                  });
+        }) 
+   }
 
      modalClose=()=>this.setState({show:false})
      modalOpen=()=>this.setState({show:true})
@@ -24,10 +40,7 @@ import { Player, BigPlayButton } from 'video-react'
                         <Row>
                             <Col lg={6} md={6} sm={12} className="videoText">
                                 <p className="serviceDescription">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<br></br><br></br>
-                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
-                                    <br></br>
-                                    It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                  {this.state.video_description}  
                                 </p>
                             </Col>
 
@@ -39,7 +52,7 @@ import { Player, BigPlayButton } from 'video-react'
                     <Modal size="lg" show={this.state.show} onHide={this.modalClose}>
 
                         <Modal.Body> 
-                            <Player src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4">
+                            <Player src={this.state.video_url}>
                                 <BigPlayButton position="center" />
                             </Player>
                         </Modal.Body>
