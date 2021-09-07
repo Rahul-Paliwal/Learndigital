@@ -11,25 +11,34 @@ import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import {BrowserRouter as Router,Switch, Route, Link} from "react-router-dom";
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
+import Loading from '../Loading/Loading';
+import Failure from '../Failure/Failure';
 
 class Footer extends Component {
     constructor(){
         super();
         this.state={ 
-             address:"...",
-             email:"...",
-             phone:"...",
-             facebook:"...",
-             youtube:"...",
-             twitter:"...",
-             linkedin:"...",
-             github:"...",
-             footer_credit:"..." 
+             address:"",
+             email:"",
+             phone:"",
+             facebook:"",
+             youtube:"",
+             twitter:"",
+             linkedin:"",
+             github:"",
+             footer_credit:"",
+             loaderClass:"p-5 text-justify",
+             mainDivClass:"d-none",
+             error:false 
         }
    }
 
     componentDidMount(){          
          RestClient.GetRequest(AppUrl.FooterData).then(result=>{
+             if(result==null){
+                 this.setState({error:true})
+             }
+             else{
              this.setState({
                   address:result[0]['address'],
                   email:result[0]['email'],
@@ -39,12 +48,18 @@ class Footer extends Component {
                   twitter:result[0]['twitter'],
                   linkedin:result[0]['linkedin'],
                   github:result[0]['github'],
-                  footer_credit:result[0]['footer_credit'] 
+                  footer_credit:result[0]['footer_credit'],
+                  loaderClass:"d-none",
+                  mainDivClass:"p-5 text-justify"  
 
                   });
-        }) 
+                }
+            }).catch(error=>{
+                this.setState({error:true})
+            })
    }
     render() {
+        if(this.state.error==false){
         return (
             <Fragment>
                 <Container fluid={true} className="footerSection">
@@ -71,13 +86,16 @@ class Footer extends Component {
 
                             </div>
                         </Col>
-                        <Col lg={3} md={6} md={12} className="p-5 text-justify">
-                            <h2 className="footerName ">Address </h2>
-                            <p className="footerDescription">
-                                {this.state.address} <br></br>
-                                <FontAwesomeIcon icon={faEnvelope}  /> Email : {this.state.email}<br></br>
-                                <FontAwesomeIcon icon={faPhone}  /> Phone : {this.state.phone}<br></br>
-                            </p>                    
+                        <Col className={this.state.loaderClass}>
+                             <Loading/>
+                        </Col>
+                        <Col lg={3} md={6} md={12} className={this.state.mainDivClass}>
+                        <h2 className="footerName ">Address </h2>
+                        <p className="footerDescription">
+                            {this.state.address} <br></br>
+                            <FontAwesomeIcon icon={faEnvelope}  /> Email : {this.state.email}<br></br>
+                            <FontAwesomeIcon icon={faPhone}  /> Phone : {this.state.phone}<br></br>
+                        </p>                    
                         </Col>
                         <Col lg={2} md={6} md={12} className="p-5 text-justify">
                             <h2 className="footerName ">Information </h2>
@@ -98,6 +116,10 @@ class Footer extends Component {
                </Container>
             </Fragment>
         )
+    }
+        else if(this.state.error==true){
+        return <Failure/>
+        }
     }
 }
 

@@ -7,6 +7,9 @@ import pagethree from '../../asset/images/page3.png';
 import imgone from '../../asset/images/19.png';
 import imgtwo from '../../asset/images/20.png';
 import imgthree from '../../asset/images/21.png';
+import Jump from 'react-reveal/Jump';
+import Slide from 'react-reveal/Slide';
+import Flip from 'react-reveal/Flip';
 
  class Welcome extends Component {
      render() {
@@ -19,28 +22,42 @@ import imgthree from '../../asset/images/21.png';
                             <div className="section-title text-center">
                                 <div className="intro-area-inner">
                                 <h6 className="sub-title double-line">WELCOME</h6>
+                                <Jump>
                                 <h2 className="maintitle">
                                         An exemplary<br></br>
                                     learning community 
                                 </h2>
+                                </Jump>
                         <Container className="text-center mt-5">
                             <Row>
                                 <Col lg={4} md={6} sm={12}>
-                                        <img src={pageone} alt="" />
-                                        <h1 className="serviceName text-center">Easy As it Gets </h1>
-                                        <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        <Slide top>
+                                            <img src={pageone} alt="" />
+                                        </Slide>
+                                        <Flip top>
+                                            <h1 className="serviceName text-center">Easy As it Gets </h1>
+                                            <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        </Flip>
                                 </Col>
 
                                 <Col lg={4} md={6} sm={12}>
-                                        <img src={pagetwo} alt="" />
-                                        <h1 className="serviceName text-center">Teach The way you want </h1>
-                                        <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        <Slide top>
+                                            <img src={pagetwo} alt="" />
+                                        </Slide>
+                                        <Flip top>
+                                            <h1 className="serviceName text-center">Teach The way you want </h1>
+                                            <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        </Flip>
                                 </Col>
 
                                 <Col lg={4} md={6} sm={12}>
-                                        <img src={pagethree} alt="" />
-                                        <h1 className="serviceName text-center">The small matter  </h1>
-                                        <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        <Slide top>
+                                            <img src={pagethree} alt="" />
+                                        </Slide>
+                                        <Flip top>
+                                            <h1 className="serviceName text-center">The small matter  </h1>
+                                            <p className="serviceDescription text-center">Lorem ipsum dolor</p>
+                                        </Flip>
                                 </Col>
                             </Row>
 

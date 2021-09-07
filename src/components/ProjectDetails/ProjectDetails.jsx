@@ -1,10 +1,36 @@
 import React, { Component, Fragment } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import projectDetailsImg from '../../asset/images/pdetails.png';
+import { Col, Container, Row, Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCheckSquare} from '@fortawesome/free-solid-svg-icons'
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
+import ReactHtmlParser from 'react-html-parser';
+import projectDetails from '../../asset/images/pdetails.png'
 
 class ProjectDetails extends Component {
+     constructor(props){
+          super();
+          this.state={
+               projectId:props.id,
+               img_two: "..",
+               project_name: "..",
+               project_description: "..",
+               project_features: "..",
+               live_preview: ".."
+          }
+     }
+     componentDidMount(){          
+        RestClient.GetRequest(AppUrl.ProjectDetails+this.state.projectId).then(result=>{
+            this.setState({
+                 img_two:result[0]['img_two'],
+                 project_name:result[0]['project_name'],
+                 project_description:result[0]['project_description'],
+                 project_features:result[0]['project_features'],
+                 live_preview:result[0]['live_preview'],  
+
+                 });
+       })
+    }  
      render() {
           return (
               <Fragment>
@@ -12,27 +38,19 @@ class ProjectDetails extends Component {
                         <Row>
                             <Col lg={6} md={6} sm={12}>
                                 <div className="about-thumb-wrap after-shape">
-                                    <img src={projectDetailsImg} alt="" />
+                                <img src={this.state.img_two} />
                                 </div>
                             </Col>
 
 
                             <Col lg={6} md={6} sm={12} className="mt-5">
                                 <div className="project-details">
-                                    <h1 className="projectDetailsText">Education in continuing a proud tradition.</h1>  
-                                    <p className="detailsName">The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph,</p>
+                                    <h1 className="projectDetailsText">{this.state.project_name}</h1>  
+                                    <p className="detailsName">{ ReactHtmlParser(this.state.project_description) }</p>
 
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Requirment Gathering </p>
+                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> { ReactHtmlParser(this.state.project_features) } </p>
 
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Metus interdum metus</p>
-
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Ligula cur maecenas Ligula cur maecenas</p>
-
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Ligula cur maecenasLigula cur maecenasLigula </p>
-
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Ligula cur maecenasLigula cur maecenasLigula cur maecenas </p>
-
-                                    <p className="cardSubTitle text-justify"><FontAwesomeIcon className="iconBullent" icon={faCheckSquare} /> Ligula cur maecenasLigula cur maecenas</p>
+                                    <Button variant="info" href={this.state.live_preview}>Live Preview</Button>
 
 
 

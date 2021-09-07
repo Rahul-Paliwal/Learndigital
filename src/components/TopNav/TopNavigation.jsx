@@ -1,7 +1,8 @@
 import React, { Component,Fragment } from 'react'
 import { Container, Navbar,Nav } from 'react-bootstrap'
-import '../../asset/css/style.css'; 
 import '../../asset/css/bootstrap.min.css'; 
+import '../../asset/css/style.css'; 
+import '../../asset/css/responsive.css'; 
 import whiteLogo from '../../asset/images/logo_white.png'
 import blackLogo from '../../asset/images/logo_black.png'
 import {NavLink} from "react-router-dom"

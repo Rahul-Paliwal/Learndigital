@@ -485,16 +485,16 @@ a.twitter {
 }
 /* /// Course Details  */
 
-.coruseDetailsText {
+.courseDetailsText {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   color: #051b35;
   font-size: 35px;
 }
-.courseDetaisImg {
+.courseDetailsImg {
   width: 100%;
 }
-.CoruseallDescription {
+.CourseallDescription {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   color: #051b35;
@@ -529,4 +529,18 @@ a.twitter {
   font-weight: 700;
   font-size: 22px;
   position: relative;
+}
+.loaderAnimation {
+  width: 70px;
+  height: 70px;
+}
+.errorAnimation {
+  width: 150px;
+  height: 150px;
+}
+.notFound {
+  color: #ce0833;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
 }

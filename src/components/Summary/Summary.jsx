@@ -8,7 +8,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons'
 import {faUser} from '@fortawesome/free-solid-svg-icons'
 import CountUp from 'react-countup'
 import VisibilitySensor from 'react-visibility-sensor'
-
+import Zoom from 'react-reveal/Zoom';
 class Summary extends Component {
     render() {
         return (
@@ -20,36 +20,69 @@ class Summary extends Component {
                                     <Col lg={8} md={6} sm={12}>
                                         <Row className="countSection">
                                             <Col>   
-                                                <FontAwesomeIcon className="iconProject" icon={faGlobe} />
+                                                <Zoom top>
+                                                    <FontAwesomeIcon className="iconProject" icon={faGlobe} />
+                                                    <h1 className="countNumber">
+                                                        <CountUp start={0} end={3100} delay={0}>
+                                                            {({ countUpRef, start }) => (
+                                                                <VisibilitySensor onChange={start} delayedCall>
+                                                                <span ref={countUpRef} />
+                                                                </VisibilitySensor>
+                                                            )}
+                                                        </CountUp>
+                                                    </h1>
+                                                </Zoom>
+                                                <h4 className="countTitle">Clients</h4>
+                                                <hr className="bg-white w-25"></hr>
+                                            </Col>
+                                            <Col>
+                                            <Zoom top>
+                                                <FontAwesomeIcon className="iconProject" icon={faLaptop} />
                                                 <h1 className="countNumber">
-                                                    <CountUp start={0} end={35100} delay={0}>
-                                                        {({ countUpRef, start }) => (
-                                                            <VisibilitySensor onChange={start} delayedCall>
-                                                            <span ref={countUpRef} />
-                                                            </VisibilitySensor>
-                                                        )}
+                                                <CountUp start={0} end={22}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                        <span ref={countUpRef} />
+                                                        </VisibilitySensor>   
+                                                    )}
+                                                </CountUp>  
+                                                </h1>  
+                                             </Zoom>    
+                                                <h4 className="countTitle">Clients</h4>
+                                                <hr className="bg-white w-25"></hr> 
+                                            </Col>
+                                            <Col>
+                                              <Zoom top>
+                                                 <FontAwesomeIcon className="iconProject" icon={faStar} />
+                                                  <h1 className="countNumber">
+                                                    <CountUp start={0} end={1000}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                        <span ref={countUpRef} />
+                                                        </VisibilitySensor>   
+                                                    )}
+                                                    </CountUp>   
+                                                    </h1>
+                                              </Zoom>
+                                                <h4 className="countTitle">Clients</h4>
+                                                <hr className="bg-white w-25"></hr>
+                                              
+                                            </Col>
+                                            <Col>
+                                            <Zoom top>
+                                                <FontAwesomeIcon className="iconProject" icon={faUser} />
+                                                <h1 className="countNumber">
+                                                <CountUp start={0} end={1000}>
+                                                    {({ countUpRef, start }) => (
+                                                        <VisibilitySensor onChange={start} delayedCall>
+                                                        <span ref={countUpRef} />
+                                                        </VisibilitySensor>   
+                                                    )}
                                                     </CountUp>
                                                 </h1>
+                                            </Zoom>
                                                 <h4 className="countTitle">Clients</h4>
-                                                <hr className="bg-white w-25"></hr>
-                                            </Col>
-                                            <Col>
-                                                <FontAwesomeIcon className="iconProject" icon={faLaptop} />
-                                                <h1 className="countNumber">1000</h1>
-                                                <h4 className="countTitle">Clients</h4>
-                                                <hr className="bg-white w-25"></hr>
-                                            </Col>
-                                            <Col>
-                                                 <FontAwesomeIcon className="iconProject" icon={faStar} />
-                                                <h1 className="countNumber">1000</h1>
-                                                <h4 className="countTitle">Clients</h4>
-                                                <hr className="bg-white w-25"></hr>
-                                            </Col>
-                                            <Col>
-                                                <FontAwesomeIcon className="iconProject" icon={faUser} />
-                                                <h1 className="countNumber">1000</h1>
-                                                <h4 className="countTitle">Clients</h4>
-                                                <hr className="bg-white w-25"></hr>
+                                                <hr className="bg-white w-25"></hr>    
                                             </Col>
                                         </Row>
                                     </Col>

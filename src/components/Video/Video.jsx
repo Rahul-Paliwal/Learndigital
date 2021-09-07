@@ -7,14 +7,17 @@ import { Player, BigPlayButton } from 'video-react'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';
+import Loading from '../Loading/Loading';
+import Zoom from 'react-reveal/Zoom';
 
  class Video extends Component {
     constructor(){
         super();
         this.state={
              show:false,
-             video_desciption:"",
-             video_url:"" 
+             video_description:"",
+             video_url:"",
+             loading:true 
         }
    }
 
@@ -23,7 +26,8 @@ import ReactHtmlParser from 'react-html-parser';
          RestClient.GetRequest(AppUrl.HomeVideo).then(result=>{
              this.setState({
                   video_description:result[0]['video_description'],
-                  video_url:result[0]['video_url'] 
+                  video_url:result[0]['video_url'],
+                  loading:false 
 
                   });
         }) 
@@ -32,6 +36,10 @@ import ReactHtmlParser from 'react-html-parser';
      modalClose=()=>this.setState({show:false})
      modalOpen=()=>this.setState({show:true})
     render() {
+        if(this.state.loading==true){
+            return <Loading/>
+        }
+        else{
         return (
             <Fragment>
                    <Container className="text-center">
@@ -39,9 +47,11 @@ import ReactHtmlParser from 'react-html-parser';
                         <div className="bottom"></div>
                         <Row>
                             <Col lg={6} md={6} sm={12} className="videoText">
+                            <Zoom top>
                                 <p className="serviceDescription">
                                   {this.state.video_description}  
                                 </p>
+                            </Zoom>
                             </Col>
 
                             <Col lg={6} md={6} sm={12} className="videoCard">
@@ -65,6 +75,7 @@ import ReactHtmlParser from 'react-html-parser';
                     </Modal>
               </Fragment>
         )
+        }
     }
 }
 

@@ -2,6 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import face from '../../asset/images/face.png'
 import { init } from 'ityped'
+import Zoom from 'react-reveal/Zoom';
+import Flip from 'react-reveal/Flip';
+import RubberBand from 'react-reveal/RubberBand';
 
  class AboutMe extends Component {
     componentDidMount(){
@@ -12,13 +15,19 @@ import { init } from 'ityped'
         return (
                 <Fragment>
                     <Container className="text-center">
-                        <h1 className="serviceMainTitle">About Us</h1>
+                        <RubberBand>
+                            <h1 className="serviceMainTitle">About Us</h1>
+                        </RubberBand>
                         <div className="bottom"></div>
                         <Row>
                             <Col lg={6} md={6} sm={12}>
-                                <div className="aboutMeImage">
-                                    <img src={face} className="aboutImg" alt="about_image"></img>
-                                </div>
+                                <Flip top>
+                                    <div className="aboutMeImage">
+                                        <Zoom top>
+                                        <img src={face} className="aboutImg" alt="about_image"></img>
+                                        </Zoom>
+                                    </div>
+                                </Flip>    
                             </Col>
                             <Col lg={6} md={6} sm={12}>
                                 <div className="aboutMeBody">

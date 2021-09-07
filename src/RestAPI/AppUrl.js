@@ -7,7 +7,7 @@ class AppUrl{
     static HomeVideo = this.BaseURL+'/home/video';
 
 
-    static ProjectDetails = this.BaseURL+'/projectdetails';
+    static ProjectDetails = this.BaseURL+'/projectdetails/';
     static ProjectAll = this.BaseURL+'/projectall';
     static ProjectHome = this.BaseURL+'/projecthome';
 
@@ -17,7 +17,7 @@ class AppUrl{
 
     static FooterData = this.BaseURL+'/footerdata';
 
-    static CourseDetails = this.BaseURL+'/coursedetails';
+    static CourseDetails = this.BaseURL+'/coursedetails/';
     static CourseAll = this.BaseURL+'/courseall';
     static CourseHome = this.BaseURL+'/coursehome';
 

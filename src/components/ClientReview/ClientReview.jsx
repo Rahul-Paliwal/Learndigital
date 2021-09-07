@@ -5,21 +5,28 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick";
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
-
+import Loading from '../Loading/Loading';
+import Zoom from 'react-reveal/Zoom';
 
 class ClientReview extends Component {
         constructor(){
           super();
           this.state={
-            clientData:[]
+            clientData:[],
+            loading:true
           }
       }
       componentDidMount(){
               RestClient.GetRequest(AppUrl.ClientReview).then(result=>{
-                  this.setState({clientData:result});
+                  this.setState({clientData:result,loading:false});
               })
       }
      render() {
+       if(this.state.loading==true){
+         return <Loading/>
+       }
+       else
+       {
       var settings = {
         autoplaySpeed:3000,
         autoplay:true,
@@ -65,10 +72,11 @@ class ClientReview extends Component {
         return    <div>
           <Row className="text-center justify-content-center">
                <Col lg={6} md={6} sm={12}>
-                <img className="circleImg" src={clientList.client_image} />
-                <h2 className="reviewName">{clientList.client_title}</h2>
-                <p className="reviewDescription">{clientList.client_comment}</p>
-
+               <Zoom top>
+                  <img className="circleImg" src={clientList.client_image} />
+                  <h2 className="reviewName">{clientList.client_title}</h2>
+                  <p className="reviewDescription">{clientList.client_comment}</p>
+                </Zoom>
                </Col>
           </Row>
           </div>  
@@ -90,6 +98,7 @@ class ClientReview extends Component {
             </Container>
             </Fragment>
           )
+       }
      }
 }
 

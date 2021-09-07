@@ -5,14 +5,16 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import {faPhone} from '@fortawesome/free-solid-svg-icons'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
-
+import Loading from '../Loading/Loading';
+import Zoom from 'react-reveal/Zoom';
  class Contact extends Component {
     constructor(){
         super();
         this.state={ 
-             address:"...",
-             email:"...",
-             phone:"..." 
+             address:"",
+             email:"",
+             phone:"",
+             loading:true  
 
         }
    }
@@ -22,7 +24,8 @@ import AppUrl from '../../RestAPI/AppUrl';
              this.setState({
                   address:result[0]['address'],
                   email:result[0]['email'],
-                  phone:result[0]['phone'] 
+                  phone:result[0]['phone'],
+                  loading:false 
 
                   });
         }) 
@@ -43,11 +46,17 @@ import AppUrl from '../../RestAPI/AppUrl';
 
     }
     render() {
+        if(this.state.loading == true){
+            return <Loading />
+       }
+       else{ 
+
         return (
                 <Fragment>
                     <Container className="mt-5">
                         <Row>
                             <Col lg={6} md={6} sm={12}>
+                            <Zoom left>
                                 <h1 className="serviceName">Quick Connect</h1>
                                <Form>
                                     <Form.Group  >
@@ -71,19 +80,23 @@ import AppUrl from '../../RestAPI/AppUrl';
                                         Submit
                                     </Button>
                                 </Form>
+                                </Zoom>
                             </Col>
                             <Col lg={6} md={6} sm={12}>
+                            <Zoom right>
                                 <h1 className="serviceName">Discuss Now</h1>
                                 <p className="serviceDescription">
                                   {this.state.address} <br></br>
                                     <FontAwesomeIcon icon={faEnvelope}  />  Email : {this.state.email}<br></br>
                                     <FontAwesomeIcon icon={faPhone}  />  Phone : {this.state.phone}<br></br>
                                 </p>
+                            </Zoom>
                             </Col>
                         </Row>
                     </Container>
                 </Fragment>
         )
+       }
     }
 }
 

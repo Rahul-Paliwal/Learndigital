@@ -11,6 +11,8 @@ import TermsConditionPage from '../pages/TermsConditionPage'
 import PrivacyPage from '../pages/PrivacyPage'
 import ProjectDetailPage from '../pages/ProjectDetailPage'
 import CourseDetailPage from '../pages/CourseDetailPage'
+import PageNotFound from '../components/PageNotFound/PageNotFound'
+import PageNotFoundPage from '../pages/PageNotFoundPage'
 class AppRoute extends Component {
     render() {
         return (
@@ -25,9 +27,9 @@ class AppRoute extends Component {
                         <Route exact path="/refund-policy" component={RefundPage}/>
                         <Route exact path="/terms-condition" component={TermsConditionPage}/>
                         <Route exact path="/privacy-policy" component={PrivacyPage}/>
-                        <Route exact path="/projectdetails" component={ProjectDetailPage} />
-                        <Route exact path="/coursedetails" component={CourseDetailPage} />
-            
+                        <Route exact path="/projectdetails/:projectID/:projectName" component={ProjectDetailPage} />
+                        <Route exact path="/coursedetails/:courseID/:courseName" component={CourseDetailPage} />
+                        <Route component={PageNotFoundPage} />
                     </Switch>
 
 
